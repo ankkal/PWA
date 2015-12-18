@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>pwa/css/paywithamazon.css</stylesheet></action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template" template="pwa/paywithamazon/init.phtml" />
+        </reference>
+    </default>
+    <paywithamazon_adminhtml_debug_index>
+        <reference name="content">
+            <block type="paywithamazon/adminhtml_debug" name="paywithamazon_debug_info" />
+        </reference>
+    </paywithamazon_adminhtml_debug_index>
+    <paywithamazon_adminhtml_logger_exceptions_index>
+        <reference name="content">
+            <block type="paywithamazon/adminhtml_logger_exceptions" name="amazon_exceptions" />
+        </reference>
+    </paywithamazon_adminhtml_logger_exceptions_index>
+    <paywithamazon_adminhtml_logger_exceptions_view>
+        <reference name="head">
+            <action method="addJs"><script>pwa/prettify.js</script></action>
+            <action method="addJs"><script>pwa/modalbox.js</script></action>
+            <action method="addCss"><stylesheet>pwa/css/modalbox.css</stylesheet></action>
+        </reference>
+    </paywithamazon_adminhtml_logger_exceptions_view>
+    <paywithamazon_adminhtml_logger_feeds_index>
+        <reference name="content">
+            <block type="paywithamazon/adminhtml_logger_feeds" name="amazon_feeds" />
+        </reference>
+    </paywithamazon_adminhtml_logger_feeds_index>
+    <paywithamazon_adminhtml_logger_feeds_view>
+        <reference name="head">
+            <action method="addJs"><script>pwa/prettify.js</script></action>
+            <action method="addJs"><script>pwa/modalbox.js</script></action>
+            <action method="addCss"><stylesheet>pwa/css/modalbox.css</stylesheet></action>
+        </reference>
+    </paywithamazon_adminhtml_logger_feeds_view>
+    <paywithamazon_adminhtml_logger_notifications_index>
+        <reference name="content">
+            <block type="paywithamazon/adminhtml_logger_notifications" name="amazon_notifications" />
+        </reference>
+    </paywithamazon_adminhtml_logger_notifications_index>
+    <paywithamazon_adminhtml_logger_notifications_view>
+        <reference name="head">
+            <action method="addJs"><script>pwa/prettify.js</script></action>
+            <action method="addJs"><script>pwa/modalbox.js</script></action>
+            <action method="addCss"><stylesheet>pwa/css/modalbox.css</stylesheet></action>
+        </reference>
+    </paywithamazon_adminhtml_logger_notifications_view>
+    <paywithamazon_adminhtml_logger_reports_index>
+        <reference name="content">
+            <block type="paywithamazon/adminhtml_logger_reports" name="amazon_reports" />
+        </reference>
+    </paywithamazon_adminhtml_logger_reports_index>
+    <paywithamazon_adminhtml_logger_reports_view>
+        <reference name="head">
+            <action method="addJs"><script>pwa/prettify.js</script></action>
+            <action method="addJs"><script>pwa/modalbox.js</script></action>
+            <action method="addCss"><stylesheet>pwa/css/modalbox.css</stylesheet></action>
+        </reference>
+    </paywithamazon_adminhtml_logger_reports_view>
+    <paywithamazon_adminhtml_logger_api_index>
+        <reference name="content">
+            <block type="paywithamazon/adminhtml_logger_api" name="amazon_api" />
+        </reference>
+    </paywithamazon_adminhtml_logger_api_index>
+    <paywithamazon_adminhtml_logger_api_view>
+        <reference name="head">
+            <action method="addJs"><script>pwa/prettify.js</script></action>
+            <action method="addJs"><script>pwa/modalbox.js</script></action>
+            <action method="addCss"><stylesheet>pwa/css/modalbox.css</stylesheet></action>
+        </reference>
+    </paywithamazon_adminhtml_logger_api_view>
+<adminhtml_sales_order_view>
+   <reference name="order_tab_info">
+        <action method="setTemplate">
+            <template>pwa/paywithamazon/sales/order/view/tab/info.phtml</template>
+        </action> 
+    </reference>
+</adminhtml_sales_order_view>
+</layout>

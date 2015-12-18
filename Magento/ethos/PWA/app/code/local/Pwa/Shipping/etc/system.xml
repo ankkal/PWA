@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+     <tabs>
+        <pwa translate="label" module="paywithamazon">
+            <label><![CDATA[<div id="pwa-system-config">Pay with Amazon Extension</div>]]></label>
+            <sort_order>99</sort_order>
+        </pwa>
+    </tabs>
+    <sections>        
+         <paywithamazon translate="label" module="paywithamazon">
+            <label>Pay with Amazon</label>
+            <comment>This extension was developed by Pwa Technologies</comment>
+            <class>amazon-payment-india-section</class>
+            <header_css>amazon-payment-india-header</header_css>
+            <tab>pwa</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+
+            <groups>
+                <easyship translate="label" module="paywithamazon">
+                    <label>Shipping Email Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+
+                    <fields>
+                       <email_settings translate="label">
+                            <label>Send Shipment Updation Email to Customer</label>
+                            <comment>
+                                Sender will be picked from Default Shipment Settings
+                                <!-- <![CDATA[<a target='_blank' href='admin/system_config/edit/section/general/'>Click Here</a>]]> -->
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </email_settings> 
+                        <email_template translate="label">
+                            <label>Shipment Update Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </email_template>
+                        <send_copy_to translate="label">
+                            <label>Send Shipment Update Email To</label>
+                            <comment>Comma-separated Email Id.</comment>
+                            <frontend_type>text</frontend_type>                            
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </send_copy_to>
+                    </fields>
+                </easyship>
+            </groups>
+        </paywithamazon>
+
+        <carriers>
+            <groups>
+                <pwa_shipping translate="label">
+                    <label>Neev Shipping Carier</label>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Carrier title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </title>
+                        <sallowspecific translate="label">
+                            <label>Available for specific countries only</label>
+                            <frontend_type>select</frontend_type>
+                            <frontend_class>shipping-applicable-country</frontend_class>
+                            <source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </sallowspecific>
+                        <specificcountry translate="label">
+                            <label>Ship to Specific Countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>31</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </specificcountry>
+                        <express_max_weight translate="label">
+                            <label>Max product weight</label>
+                            <comment>Maximum weight of single product for express rate</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </express_max_weight>
+                    </fields>
+                </pwa_shipping>
+            </groups>
+        </carriers>
+    </sections>
+</config>

@@ -1,0 +1,62 @@
+<?php 	
+	if($this->placedUsingAmazon()):
+	$easyShipable=$this->isEasyShipable();
+	
+?>
+	<div style="padding: 10px;background:#fcfac9;" >
+		Amazon EasyShip Order Status: <strong><?php echo $this->getShipmentStatus();?></strong>
+		&nbsp;&nbsp;
+		
+		<button 
+			class="scalable <?php if(!$easyShipable) echo 'disabled';?>" 
+			<?php if($easyShipable):?>
+				onclick="$('loading-mask').show();
+						setLocation('<?php echo $this->getRefreshStatusButtonUrl();?>');"
+			<?php endif;?>
+		>
+			Refresh Amazon EasyShip Order Status
+		</button>
+		
+
+		<?php if(!$this->orderInfoUpdatedOnce()):?>
+		<button 
+			class="scalable"  			
+			onclick="$('loading-mask').show();
+					setLocation('<?php echo $this->getRefreshStatusButtonUrl();?>');"			
+		>
+			Get Payment Info
+		</button>
+		<?php endif; ?>
+
+		<?php if($this->canSchedulePickup()):?>
+				<?php echo $this->getSchedulePickupButtonHtml();?>
+		<?php elseif($this->canPrintLabel()):?>
+				<?php echo $this->getPrintShippingLabelButtonHtml();?>				
+		<?php elseif(!$easyShipable):?>
+			<br/>This order can not be EasyShip by Amazon
+		<?php endif;?>
+		
+	</div>
+	<?php endif;?>
+
+
+<style type="text/css">
+	.button{
+      border-width: 1px;
+	  border-style: solid;
+	  border-color: #ed6502 #a04300 #a04300 #ed6502;
+	  padding: 1px 7px 2px 7px;	  
+	  background: #f77c16 url(images/btn_over_bg.gif) repeat-x 0 0;
+	  font: bold 12px arial, helvetica, sans-serif;
+	  cursor: pointer;
+	  text-align: center !important;
+	  white-space: nowrap;
+	  text-decoration: none;
+	  color: rgb(255, 255, 255) !important;
+	  text-decoration: none;
+	}
+	.button:hover {
+		background: #ffac47 url(images/btn_bg.gif) repeat-x 0 100%;  		
+  		text-decoration: none;
+	}
+</style>

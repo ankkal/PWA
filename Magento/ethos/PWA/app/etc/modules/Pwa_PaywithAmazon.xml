@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   Neev
+ * @package    Neev_Neev_PaywithAmazon
+ * @copyright  Copyright (c) Pay with Amazon
+ * @author     Pay with Amazon    
+ */
+-->
+<config>
+    <modules>
+        <Pwa_PaywithAmazon>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Catalog/>
+                <Mage_Checkout/>
+                <Mage_Directory/>
+                <Mage_Eav/>
+                <Mage_Payment/>
+                <Mage_Sales/>
+            </depends>
+        </Pwa_PaywithAmazon>
+    </modules>
+</config>

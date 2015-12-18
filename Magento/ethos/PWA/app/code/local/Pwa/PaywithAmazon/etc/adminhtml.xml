@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * This file is part of The Official Amazon Payments Magento Extension
+ * (c) Pay with Amazon   
+ * All rights reserved
+ *
+ * Reuse or modification of this source code is not allowed
+ * without written permission from Pay with Amazon
+ *
+ * @category   Pwa
+ * @package    Pwa_PaywithAmazon
+ * @copyright  Pay with Amazon
+ * @author     Pwa / Pay with Amazon   
+ */
+-->
+<config>
+    <menu>
+        <pwa>
+            <title>Amazon</title>
+            <sort_order>99</sort_order>
+            <children>
+                <paywithamazon translate="title" module="paywithamazon">
+                    <title>Pay with Amazon</title>
+                    <sort_order>1</sort_order>
+                    <children>
+                        <settings translate="title">
+                            <title>Settings</title>
+                            <sort_order>900</sort_order>
+                            <action>adminhtml/system_config/edit/section/paywithamazon</action>
+                            <resource>system/config/paywithamazon</resource>
+                        </settings>
+                        <!-- <logger translate="title">
+                            <title>Log preview</title>
+                            <sort_order>100</sort_order>
+                            <children>
+                                <exceptions translate="title">
+                                    <title>Exceptions</title>
+                                    <sort_order>10</sort_order>
+                                    <action>paywithamazon/adminhtml_logger_exceptions</action>
+                                </exceptions>
+                                <notifications translate="title">
+                                    <title>IOPN Notifications</title>
+                                    <sort_order>20</sort_order>
+                                    <action>paywithamazon/adminhtml_logger_notifications</action>
+                                </notifications>
+                                <feeds translate="title">
+                                    <title>Feeds</title>
+                                    <sort_order>30</sort_order>
+                                    <action>paywithamazon/adminhtml_logger_feeds</action>
+                                </feeds>
+                                <reports translate="title">
+                                    <title>Reports</title>
+                                    <sort_order>40</sort_order>
+                                    <action>paywithamazon/adminhtml_logger_reports</action>
+                                </reports>
+                                <api translate="title">
+                                    <title>API Calls</title>
+                                    <sort_order>50</sort_order>
+                                    <action>paywithamazon/adminhtml_logger_api</action>
+                                </api>
+                            </children>
+                        </logger> -->
+                        <!-- <debug translate="title">
+                            <title>Debug data</title>
+                            <sort_order>110</sort_order>
+                            <action>paywithamazon/adminhtml_debug</action>
+                        </debug<name /> -->
+                    </children>
+                </paywithamazon>
+            </children>
+        </pwa>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <pwa>
+                        <children>
+                            <paywithamazon translate="title" module="paywithamazon">
+                                <title>Amazon Payment India</title>
+                                <children>
+                                    <logger translate="title">
+                                        <title>Log preview</title>
+                                        <children>
+                                            <exceptions translate="title">
+                                                <title>Exceptions</title>
+                                            </exceptions>
+                                            <notifications translate="title">
+                                                <title>IOPN Notifications</title>
+                                            </notifications>
+                                            <feeds translate="title">
+                                                <title>Feeds</title>
+                                            </feeds>
+                                            <reports translate="title">
+                                                <title>Reports</title>
+                                            </reports>
+                                            <api translate="title">
+                                                <title>API Calls</title>
+                                            </api>
+                                        </children>
+                                    </logger>
+                                    <!-- <debug translate="title">
+                                        <title>Debug data</title>
+                                    </debug> -->
+                                </children>
+                            </paywithamazon>
+                        </children>
+                    </pwa>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <paywithamazon translate="title" module="paywithamazon">
+                                        <title>Amazon Payment India settings</title>
+                                    </paywithamazon>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

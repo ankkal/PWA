@@ -1,0 +1,19 @@
+<?php
+/**
+ * This file is part of The Official Amazon Payments Magento Extension
+ * (c) Pay with Amazon
+ * All rights reserved
+ *
+ * Reuse or modification of this source code is not allowed
+ * without written permission from Pwatech
+ *
+ * @category   Pwa
+ * @package    Pwa_PaywithAmazon
+ * @copyright  Pay with Amazon
+ * @author     Pay with Amazon
+ */
+?>
+<?php echo $this->__($this->getMethod()->getTitle()); ?><br />
+<?php if ($this->getInfo()->getLastTransId()): ?>
+    <?php echo $this->__('Pay with Amazon order ID: %s', $this->htmlEscape($this->getInfo()->getLastTransId())) ?><br/><p>Please Check Pay with Amazon account to know the final status of order</p>
+<?php endif; ?>

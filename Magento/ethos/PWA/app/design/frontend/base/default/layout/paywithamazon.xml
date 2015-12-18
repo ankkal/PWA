@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout version="0.1.0">
+    <default>
+		<block type="paywithamazon/link" name="paywithamazon.button" template="pwa/paywithamazon/link.phtml"/>
+        <reference name="head">
+            <action method="addCss" ifconfig="paywithamazon/general/active"><stylesheet>pwa/css/paywithamazon.css</stylesheet></action>
+            <block type="core/text" name="pwa.js">
+				<action method="setText"><text helper="paywithamazon/addPWAJs"/></action>
+            </block>
+        </reference>
+        <reference name="topCart.extra_actions">
+			<action method="append" ifconfig="paywithamazon/design/minicart"><block>paywithamazon.button</block></action>
+        </reference>
+        <reference name="cart_sidebar.extra_actions">
+            <action method="append" ifconfig="paywithamazon/design/minicart"><block>paywithamazon.button</block></action>
+        </reference>
+    </default>
+    <cms_index_index>
+        <reference name="right">
+            <block type="paywithamazon/badge" name="paywithamazon.badge" template="pwa/paywithamazon/badge.phtml"/>
+        </reference>
+    </cms_index_index>
+    <checkout_cart_index>
+        <reference name="checkout.cart.methods">
+            <action method="append"><block>paywithamazon.button</block></action>
+        </reference>
+        <reference name="checkout.cart.top_methods">
+            <action method="append"><block>paywithamazon.button</block></action>
+        </reference>
+    </checkout_cart_index>
+    <checkout_onepage_index>
+        <reference name="content">
+            <block type="paywithamazon/link" name="paywithamazon.button" template="pwa/paywithamazon/link.phtml" before="checkout.onepage"/>
+        </reference>
+    </checkout_onepage_index>
+    <paywithamazon_checkout_index translate="label">
+        <label>Pay with Amazon</label>
+        <remove name="left"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+        <reference name="right">
+            <action method="unsetChildren"></action>
+            <block type="page/html_wrapper" name="checkout.progress.wrapper" translate="label">
+                <label>Checkout Progress Wrapper</label>
+                <action method="setElementId"><value>checkout-progress-wrapper</value></action>
+                <block type="paywithamazon/checkout_progress" name="checkout.progress" before="-" template="pwa/paywithamazon/checkout/progress.phtml"/>
+            </block>
+        </reference>
+        <reference name="content">
+            <block type="paywithamazon/checkout" name="paywithamazon" template="pwa/paywithamazon/checkout.phtml">
+                <block type="paywithamazon/checkout_shipping" name="paywithamazon.shipping" as="shipping" template="pwa/paywithamazon/checkout/shipping.phtml"/>
+                <block type="checkout/onepage_shipping_method" name="paywithamazon.shipping_method" as="shipping_method" template="pwa/paywithamazon/checkout/shipping_method.phtml">
+                    <block type="checkout/onepage_shipping_method_available" name="paywithamazon.shipping_method.available" as="available" template="checkout/onepage/shipping_method/available.phtml"/>
+                    <!-- <block type="checkout/onepage_shipping_method_additional" name="paywithamazon.shipping_method.additional" as="additional" template="checkout/onepage/shipping_method/additional.phtml"/> -->
+                </block>
+                <block type="paywithamazon/checkout_payment" name="paywithamazon.payment" as="payment" template="pwa/paywithamazon/checkout/payment.phtml"/>
+                <block type="checkout/onepage_review" name="paywithamazon.review" as="review" template="pwa/paywithamazon/checkout/review.phtml"/>
+            </block>
+        </reference>
+    </paywithamazon_checkout_index>
+    <paywithamazon_checkout_progress translate="label">
+        <label>Pay with Amazon Progress</label>
+        <remove name="right"/>
+        <remove name="left"/>
+        <block type="paywithamazon/checkout_progress" name="root" output="toHtml" template="pwa/paywithamazon/checkout/progress.phtml">
+            <block type="paywithamazon/checkout_progress_info" name="paywithamazon.progress.shipping_info" as="shipping_info" template="pwa/paywithamazon/checkout/progress/shipping.phtml"/>
+            <block type="paywithamazon/checkout_progress_info" name="paywithamazon.progress.payment_info" as="payment_info" template="pwa/paywithamazon/checkout/progress/payment.phtml"/>
+        </block>
+    </paywithamazon_checkout_progress>
+    <paywithamazon_checkout_review translate="label">
+        <label>Pay with Amazon Overview</label>
+        <remove name="right"/>
+        <remove name="left"/>
+        <block type="checkout/onepage_review_info" name="root" output="toHtml" template="pwa/paywithamazon/checkout/review/info.phtml">
+            <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>checkout/onepage/review/item.phtml</template></action>
+            <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/onepage/review/item.phtml</template></action>
+            <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/onepage/review/item.phtml</template></action>
+            <block type="checkout/cart_totals" name="paywithamazon.review.info.totals" as="totals" template="checkout/onepage/review/totals.phtml"/>
+            <block type="core/text_list" name="paywithamazon.review.info.items.before" as="items_before" translate="label">
+                <label>Items Before</label>
+            </block>
+            <block type="core/text_list" name="paywithamazon.review.info.items.after" as="items_after" translate="label">
+                <label>Items After</label>
+            </block>
+            <block type="checkout/agreements" name="paywithamazon.agreements" as="agreements" template="checkout/onepage/agreements.phtml"/>
+            <block type="core/template" name="paywithamazon.review.button" as="button" template="pwa/paywithamazon/checkout/review/button.phtml"/>
+        </block>
+    </paywithamazon_checkout_review>
+    <paywithamazon_checkout_success translate="label">
+        <label>Pay with Amazon Success</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="paywithamazon/checkout_success" name="paywithamazon.success" template="pwa/paywithamazon/checkout/success.phtml"/>
+        </reference>
+    </paywithamazon_checkout_success>
+    <paywithamazon_checkout_failure translate="label">
+        <label>Pay with Amazon Failure</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="paywithamazon/checkout_success" name="paywithamazon.success" template="pwa/paywithamazon/checkout/failure.phtml"/>
+        </reference>
+    </paywithamazon_checkout_failure>
+<sales_order_view>
+    <reference name="sales.order.info">
+        <action method="setTemplate">
+            <template>pwa/paywithamazon/sales/order/info.phtml</template>
+        </action> 
+    </reference>
+</sales_order_view>
+</layout>
